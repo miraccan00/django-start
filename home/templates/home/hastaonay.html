@@ -1,0 +1,35 @@
+{% extends "base/base.html" %}
+{% block content %}
+
+{{ hasta.name }}
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <form action="{% url 'home:evrakkayitform' %}" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="cars">Doktor
+                    </label>
+                    <select name="doctors" id="cars">
+                        {% for doctor in doctors %}
+                        <option value="{{ doctor.id }}">{{ doctor.name }} {{ doctor.surname }}
+                        </option>
+                        {% endfor %}
+                    </select>
+                </div>
+                {% for document in documents %}
+                <input type="checkbox" value={{ document.document_name }} name="documents">
+                <a href="{{ document.documentlink}}"> {{ document.document_name }}</a>
+                {% endfor %}
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary mt-2">Gonder</button>
+    </form>
+</div>
+</div>
+</div>
+{% endblock content %}
+{% block script %}
+<script>
+</script>
+{% endblock script %}

@@ -1,0 +1,10 @@
+{% extends "base/base.html" %}
+{% block content %}
+
+<div class="container">
+    <form method="post" action="{% url 'home:hastakayit'   %}" style="margin-top: 1.3em;">
+        {% csrf_token %} {{ form.as_p }}
+        <button type="submit" class="btn btn-primary btn-lg">Gönder</button>
+    </form>
+</div>
+{% endblock content %}
